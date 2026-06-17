@@ -1,0 +1,284 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Montserrat', sans-serif;
+    min-height: 100vh;
+    position: relative; /* Necessário para ancorar o fundo falso */
+}
+
+/* Camada do Background com Opacidade */
+body::before {
+    content: ""; /* Obrigatório para o pseudo-elemento existir */
+    position: fixed; /* Mantém o fundo fixo ao rolar a página */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    
+    /* Sua imagem de fundo aqui */
+    background-image: url('./imagens/valentine-background-tfrpvj8z713s9hrl.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    
+    /* Controle de opacidade exclusivo da imagem (0.1 a 1) */
+    opacity: 0.6; 
+    
+    /* Garante que o fundo fique TRÁS de todos os elementos do site */
+    z-index: -1; 
+}
+
+
+header{
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  position: relative;
+}
+
+.primeira-escrita {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    width: 100%;
+    max-width: 600px;
+    font-family: "Parisienne", cursive;
+    font-size: 30px;
+    color: #333;
+}
+
+.logo img {
+  display: block;
+  border-radius: 50%;
+  width: 150px;
+  height: auto;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.primeira-declaracao{
+  text-align: center;
+  font-family: "Parisienne", cursive;
+  font-size: 20px;
+  width: 100%;
+  padding-right: 30px;
+  padding-left: 30px;
+  color: #333;
+  
+}
+.segunda-escrita{
+  text-align: center;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.cards-container {
+    max-width: 1100px;
+    margin: 40px auto;
+    padding: 0 20px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+}
+
+.card {
+    background: rgba(255, 255, 255, 0.85);
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 25px rgba(0, 0, 0, 0.2);
+}
+
+.card-img-wrapper {
+    width: 100%;
+    height: 250px;
+    overflow: hidden;
+}
+
+.card-img-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    transition: transform 0.5s ease;
+}
+
+
+.card:hover .card-img-wrapper img {
+    transform: scale(1.05);
+}
+
+.card-content {
+    padding: 20px;
+    text-align: center;
+}
+
+.card-content h3 {
+    font-size: 20px;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.card-content p {
+    font-size: 14px;
+    color: #666;
+    line-height: 1.5;
+}
+
+.carousel-section {
+    margin: 60px auto;
+    padding: 20px;
+}
+
+.section-title {
+    text-align: center;
+    font-family: "Parisienne", cursive;
+    font-size: 40px;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+
+.carousel {
+    position: relative;
+    max-width: 500px;
+    margin: auto;
+    overflow: hidden;
+    border-radius: 12px;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+}
+
+.carousel-container {
+  position: relative;
+  width: 100%;
+  height: 400px;
+}
+
+.carousel-slide {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
+  z-index: 1;
+}
+
+.carousel-slide.active {
+  opacity: 1;
+  z-index: 2;
+}
+
+.carousel-slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center;
+
+}
+
+.carousel-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(0, 0, 0, 0.5);
+  color: white;
+  border: none;
+  padding: 16px;
+  cursor: pointer;
+  z-index: 10;
+  font-size: 18px;
+  border-radius: 50%;
+  transition: background 0.3s;
+}
+
+.carousel-btn:hover { background: rgba(0, 0, 0, 0.8); }
+.carousel-btn.prev { left: 10px; }
+.carousel-btn.next { right: 10px; }
+
+.carousel-indicators {
+  position: absolute;
+  bottom: 15px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 8px;
+  z-index: 10;
+}
+
+.dot {
+  width: 12px;
+  height: 12px;
+  background: rgba(255, 255, 255, 0.5);
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.dot.active { background: white; }
+
+.parte-de-baixo {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 40px;
+    margin: 40px 30px;
+    color: #333;
+}
+
+.lado-direito, .lado-esquerdo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    flex: 1;
+    max-width: 450px;
+    background: rgba(255, 255, 255, 0.7);
+    padding: 20px;
+    border-radius: 12px;
+}
+
+
+.parte-de-baixo img {
+    width: 250px;
+    height: 250px;
+    object-fit: cover;
+    border-radius: 50%;
+    margin-bottom: 15px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+}
+
+/* Espaçamento nos textos */
+.parte-de-baixo h2 {
+    font-family: "Parisienne", cursive;
+    font-size: 28px;
+    margin-bottom: 10px;
+}
+
+.parte-de-baixo h3 {
+    font-size: 15px;
+    font-weight: 400;
+    line-height: 1.6;
+}
+.noivado{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 20px;
+}
